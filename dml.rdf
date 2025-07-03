@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://cramsoft.org/academico#"
+     xml:base="http://cramsoft.org/academico"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:bibo="http://purl.org/ontology/bibo/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <owl:Ontology rdf:about="http://cramsoft.org/academico"/>
+
+    <!-- ================================================================= -->
+    <!-- Object Properties                                                 -->
+    <!-- (Definiciones para que el modelo sea más explícito)               -->
+    <!-- ================================================================= -->
+
+    <owl:ObjectProperty rdf:about="#asignadoA"/>
+    <owl:ObjectProperty rdf:about="#asignadoEn"/>
+    <owl:ObjectProperty rdf:about="#cursoDictadoEn"/>
+    <owl:ObjectProperty rdf:about="#dicta"/>
+    <owl:ObjectProperty rdf:about="#perteneceAArea"/>
+    <owl:ObjectProperty rdf:about="#perteneceLinea"/>
+    <owl:ObjectProperty rdf:about="#relacionadoConLinea"/>
+    <owl:ObjectProperty rdf:about="#subAreaDe"/>
+    <owl:ObjectProperty rdf:about="#tieneAsignacion"/>
+    <owl:ObjectProperty rdf:about="#tieneDisponibilidad"/>
+    <owl:ObjectProperty rdf:about="#tieneProduccion"/>
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/creator"/>
+
+    <!-- ================================================================= -->
+    <!-- Data Properties                                                   -->
+    <!-- ================================================================= -->
+
+    <owl:DatatypeProperty rdf:about="#anio"/>
+    <owl:DatatypeProperty rdf:about="#codigo"/>
+    <owl:DatatypeProperty rdf:about="#creditos"/>
+    <owl:DatatypeProperty rdf:about="#doi"/>
+    <owl:DatatypeProperty rdf:about="#especialidad"/>
+    <owl:DatatypeProperty rdf:about="#fechaPublicacion"/>
+    <owl:DatatypeProperty rdf:about="#gradoAcademico"/>
+    <owl:DatatypeProperty rdf:about="#horasAsignadas"/>
+    <owl:DatatypeProperty rdf:about="#orcid"/>
+    <owl:DatatypeProperty rdf:about="#revista"/>
+    <owl:DatatypeProperty rdf:about="#semestre"/>
+    <owl:DatatypeProperty rdf:about="#titulo"/>
+
+    <!-- ====================== -->
+    <!-- ÁREAS ACADÉMICAS -->
+    <!-- ====================== -->
+
+    <rdf:Description rdf:about="#area1">
+        <rdf:type rdf:resource="#Area"/>
+        <rdfs:label>Ciencias de la Computación</rdfs:label>
+        <rdfs:comment>Área de conocimiento enfocada en sistemas computacionales</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#area2">
+        <rdf:type rdf:resource="#Area"/>
+        <rdfs:label>Educación</rdfs:label>
+        <rdfs:comment>Área de conocimiento enfocada en procesos educativos</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#area3">
+        <rdf:type rdf:resource="#Area"/>
+        <rdfs:label>Matemáticas</rdfs:label>
+        <rdfs:comment>Área de conocimiento enfocada en ciencias matemáticas</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#area4">
+        <rdf:type rdf:resource="#Area"/>
+        <rdfs:label>Ingeniería</rdfs:label>
+        <rdfs:comment>Área de conocimiento enfocada en ingeniería y tecnología</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#area5">
+        <rdf:type rdf:resource="#Area"/>
+        <rdfs:label>Administración</rdfs:label>
+        <rdfs:comment>Área de conocimiento enfocada en gestión y administración</rdfs:comment>
+    </rdf:Description>
+
+    <!-- ====================== -->
+    <!-- LÍNEAS DE INVESTIGACIÓN -->
+    <!-- ====================== -->
+
+    <rdf:Description rdf:about="#linea1">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Inteligencia Artificial</rdfs:label>
+        <rdfs:comment>Investigación en sistemas inteligentes y aprendizaje automático</rdfs:comment>
+        <subAreaDe rdf:resource="#area1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea2">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Tecnología Educativa</rdfs:label>
+        <rdfs:comment>Aplicación de tecnologías en procesos educativos</rdfs:comment>
+        <subAreaDe rdf:resource="#area2"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea3">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Ingeniería de Software</rdfs:label>
+        <rdfs:comment>Metodologías y herramientas para desarrollo de software</rdfs:comment>
+        <subAreaDe rdf:resource="#area1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea4">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Ciencia de Datos</rdfs:label>
+        <rdfs:comment>Análisis y procesamiento de grandes volúmenes de datos</rdfs:comment>
+        <subAreaDe rdf:resource="#area1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea5">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Ciberseguridad</rdfs:label>
+        <rdfs:comment>Seguridad informática y protección de datos</rdfs:comment>
+        <subAreaDe rdf:resource="#area1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea6">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Estadística Aplicada</rdfs:label>
+        <rdfs:comment>Aplicación de métodos estadísticos en diversas áreas</rdfs:comment>
+        <subAreaDe rdf:resource="#area3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea7">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Investigación Educativa</rdfs:label>
+        <rdfs:comment>Metodologías de investigación en educación</rdfs:comment>
+        <subAreaDe rdf:resource="#area2"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea8">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Sistemas Distribuidos</rdfs:label>
+        <rdfs:comment>Diseño y desarrollo de sistemas distribuidos</rdfs:comment>
+        <subAreaDe rdf:resource="#area1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#linea9">
+        <rdf:type rdf:resource="#LineaInvestigacion"/>
+        <rdfs:label>Gestión de Proyectos</rdfs:label>
+        <rdfs:comment>Metodologías para gestión de proyectos tecnológicos</rdfs:comment>
+        <subAreaDe rdf:resource="#area5"/>
+    </rdf:Description>
+
+    <!-- ====================== -->
+    <!-- PERÍODOS ACADÉMICOS -->
+    <!-- ====================== -->
+
+    <rdf:Description rdf:about="#periodo1">
+        <rdf:type rdf:resource="#PeriodoAcademico"/>
+        <rdfs:label>2024-I</rdfs:label>
+        <rdfs:comment>Primer semestre del año 2024</rdfs:comment>
+        <anio rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2024</anio>
+        <semestre rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</semestre>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#periodo2">
+        <rdf:type rdf:resource="#PeriodoAcademico"/>
+        <rdfs:label>2024-II</rdfs:label>
+        <rdfs:comment>Segundo semestre del año 2024</rdfs:comment>
+        <anio rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2024</anio>
+        <semestre rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</semestre>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#periodo3">
+        <rdf:type rdf:resource="#PeriodoAcademico"/>
+        <rdfs:label>2025-I</rdfs:label>
+        <rdfs:comment>Primer semestre del año 2025</rdfs:comment>
+        <anio rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</anio>
+        <semestre rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</semestre>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#periodo4">
+        <rdf:type rdf:resource="#PeriodoAcademico"/>
+        <rdfs:label>2025-II</rdfs:label>
+        <rdfs:comment>Segundo semestre del año 2025</rdfs:comment>
+        <anio rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</anio>
+        <semestre rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</semestre>
+    </rdf:Description>
+
+    <!-- ====================== -->
+    <!-- CURSOS -->
+    <!-- ====================== -->
+
+    <rdf:Description rdf:about="#curso1">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Fundamentos de Inteligencia Artificial</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS301</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso2">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Herramientas Digitales para la Educación</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ED201</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</creditos>
+        <perteneceAArea rdf:resource="#area2"/>
+        <relacionadoConLinea rdf:resource="#linea2"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso3">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Minería de Datos Avanzada</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS401</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso4">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Seminario de Investigación en IA</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS501</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso5">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Desarrollo de Software Ágil</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS302</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso6">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Patrones de Diseño Avanzado</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS402</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso7">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Ciberseguridad en Aplicaciones Web</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS303</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea5"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso8">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Estadística para Data Science</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MT201</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area3"/>
+        <relacionadoConLinea rdf:resource="#linea6"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso9">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Metodologías de Investigación Educativa</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ED301</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</creditos>
+        <perteneceAArea rdf:resource="#area2"/>
+        <relacionadoConLinea rdf:resource="#linea7"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso10">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Sistemas Distribuidos</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS403</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea8"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso11">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Gestión de Proyectos de Software</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AD201</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</creditos>
+        <perteneceAArea rdf:resource="#area5"/>
+        <relacionadoConLinea rdf:resource="#linea9"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso12">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Machine Learning Avanzado</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS502</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso13">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Análisis de Redes Sociales</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS404</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso14">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Realidad Virtual en Educación</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ED302</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</creditos>
+        <perteneceAArea rdf:resource="#area2"/>
+        <relacionadoConLinea rdf:resource="#linea2"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#curso15">
+        <rdf:type rdf:resource="#Curso"/>
+        <rdfs:label>Arquitectura de Microservicios</rdfs:label>
+        <codigo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CS503</codigo>
+        <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+        <perteneceAArea rdf:resource="#area1"/>
+        <relacionadoConLinea rdf:resource="#linea8"/>
+    </rdf:Description>
+
+    <!-- ====================== -->
+    <!-- DOCENTES -->
+    <!-- ====================== -->
+
+    <foaf:Person rdf:about="#docente1">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Dra. María González López</foaf:name>
+        <foaf:title>Dra.</foaf:title>
+        <foaf:mbox>mgonzalez@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhD en Ciencias de la Computación</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inteligencia Artificial y Machine Learning</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0002-1234-5678</orcid>
+        <perteneceLinea rdf:resource="#linea1"/>
+        <perteneceLinea rdf:resource="#linea4"/>
+        <tieneProduccion rdf:resource="#pub1"/>
+        <tieneProduccion rdf:resource="#pub12"/>
+        <tieneAsignacion rdf:resource="#asignacion1"/>
+        <tieneAsignacion rdf:resource="#asignacion2"/>
+        <tieneAsignacion rdf:resource="#asignacion14"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad1"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente2">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Mg. Juan Pérez Rojas</foaf:name>
+        <foaf:title>Mg.</foaf:title>
+        <foaf:mbox>jperez@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Magíster en Educación con mención en Docencia Universitaria</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tecnología Educativa</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0003-9876-5432</orcid>
+        <perteneceLinea rdf:resource="#linea2"/>
+        <perteneceLinea rdf:resource="#linea7"/>
+        <tieneProduccion rdf:resource="#pub2"/>
+        <tieneProduccion rdf:resource="#pub8"/>
+        <tieneAsignacion rdf:resource="#asignacion3"/>
+        <tieneAsignacion rdf:resource="#asignacion4"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad2"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente3">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Dr. Carlos Vega Medina</foaf:name>
+        <foaf:title>Dr.</foaf:title>
+        <foaf:mbox>cvega@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhD en Ciencia de Datos</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Análisis de Datos y Estadística Computacional</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0005-5566-7788</orcid>
+        <perteneceLinea rdf:resource="#linea3"/>
+        <perteneceLinea rdf:resource="#linea4"/>
+        <perteneceLinea rdf:resource="#linea6"/>
+        <tieneProduccion rdf:resource="#pub4"/>
+        <tieneProduccion rdf:resource="#pub13"/>
+        <tieneAsignacion rdf:resource="#asignacion9"/>
+        <tieneAsignacion rdf:resource="#asignacion15"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad3"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente4">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Dra. Ana Torres Suárez</foaf:name>
+        <foaf:title>Dra.</foaf:title>
+        <foaf:mbox>atorres@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhD en Ingeniería de Software</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arquitectura de Software y Sistemas Distribuidos</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0004-1122-3344</orcid>
+        <perteneceLinea rdf:resource="#linea3"/>
+        <perteneceLinea rdf:resource="#linea8"/>
+        <tieneProduccion rdf:resource="#pub3"/>
+        <tieneProduccion rdf:resource="#pub5"/>
+        <tieneProduccion rdf:resource="#pub15"/>
+        <tieneAsignacion rdf:resource="#asignacion10"/>
+        <tieneAsignacion rdf:resource="#asignacion11"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad4"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente5">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Dr. Roberto Silva Mendoza</foaf:name>
+        <foaf:title>Dr.</foaf:title>
+        <foaf:mbox>rsilva@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhD en Ciberseguridad</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Seguridad Informática y Criptografía</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0006-2233-4455</orcid>
+        <perteneceLinea rdf:resource="#linea5"/>
+        <perteneceLinea rdf:resource="#linea3"/>
+        <tieneProduccion rdf:resource="#pub6"/>
+        <tieneAsignacion rdf:resource="#asignacion5"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad5"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente6">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Dra. Elena Morales Castro</foaf:name>
+        <foaf:title>Dra.</foaf:title>
+        <foaf:mbox>emorales@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhD en Estadística</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Estadística Aplicada y Análisis de Datos</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0007-3344-5566</orcid>
+        <perteneceLinea rdf:resource="#linea6"/>
+        <perteneceLinea rdf:resource="#linea4"/>
+        <tieneProduccion rdf:resource="#pub7"/>
+        <tieneAsignacion rdf:resource="#asignacion6"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad6"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente7">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Mg. Luis Herrera Paz</foaf:name>
+        <foaf:title>Mg.</foaf:title>
+        <foaf:mbox>lherrera@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Magíster en Educación</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metodologías de Investigación Educativa</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0008-4455-6677</orcid>
+        <perteneceLinea rdf:resource="#linea2"/>
+        <perteneceLinea rdf:resource="#linea7"/>
+        <tieneProduccion rdf:resource="#pub8"/>
+        <tieneAsignacion rdf:resource="#asignacion7"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad7"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente8">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Dr. Miguel Ángel Ruiz</foaf:name>
+        <foaf:title>Dr.</foaf:title>
+        <foaf:mbox>mruiz@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhD en Ingeniería de Software</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sistemas Distribuidos y Cloud Computing</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0009-5566-7788</orcid>
+        <perteneceLinea rdf:resource="#linea8"/>
+        <perteneceLinea rdf:resource="#linea3"/>
+        <tieneProduccion rdf:resource="#pub9"/>
+        <tieneAsignacion rdf:resource="#asignacion12"/>
+        <tieneAsignacion rdf:resource="#asignacion13"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad8"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente9">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Dra. Patricia Navarro León</foaf:name>
+        <foaf:title>Dra.</foaf:title>
+        <foaf:mbox>pnavarro@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhD en Ciencias de la Computación</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Realidad Virtual y Aumentada</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0010-6677-8899</orcid>
+        <perteneceLinea rdf:resource="#linea1"/>
+        <perteneceLinea rdf:resource="#linea2"/>
+        <tieneProduccion rdf:resource="#pub10"/>
+        <tieneProduccion rdf:resource="#pub14"/>
+        <tieneAsignacion rdf:resource="#asignacion8"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad9"/>
+    </foaf:Person>
+
+    <foaf:Person rdf:about="#docente10">
+        <rdf:type rdf:resource="#Docente"/>
+        <foaf:name>Mg. Fernando Campos Díaz</foaf:name>
+        <foaf:title>Mg.</foaf:title>
+        <foaf:mbox>fcampos@universidad.edu</foaf:mbox>
+        <gradoAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Magíster en Gestión de Proyectos</gradoAcademico>
+        <especialidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gestión de Proyectos Tecnológicos</especialidad>
+        <orcid rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0000-0011-7788-9900</orcid>
+        <perteneceLinea rdf:resource="#linea9"/>
+        <perteneceLinea rdf:resource="#linea3"/>
+        <tieneProduccion rdf:resource="#pub11"/>
+        <tieneAsignacion rdf:resource="#asignacion16"/>
+        <tieneDisponibilidad rdf:resource="#disponibilidad10"/>
+    </foaf:Person>
+
+    <!-- ====================== -->
+    <!-- DISPONIBILIDADES HORARIAS -->
+    <!-- ====================== -->
+
+    <rdf:Description rdf:about="#disponibilidad1">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Dra. María González López</rdfs:label>
+        <rdfs:comment>Lunes 8:00-12:00, Miércoles 14:00-18:00, Viernes 8:00-12:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad2">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Mg. Juan Pérez Rojas</rdfs:label>
+        <rdfs:comment>Martes 9:00-13:00, Jueves 15:00-19:00, Sábados 8:00-12:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad3">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Dr. Carlos Vega Medina</rdfs:label>
+        <rdfs:comment>Lunes 14:00-18:00, Miércoles 8:00-12:00, Viernes 14:00-18:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad4">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Dra. Ana Torres Suárez</rdfs:label>
+        <rdfs:comment>Martes 8:00-12:00, Jueves 8:00-12:00, Sábados 14:00-18:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad5">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Dr. Roberto Silva Mendoza</rdfs:label>
+        <rdfs:comment>Lunes 10:00-14:00, Miércoles 16:00-20:00, Viernes 10:00-14:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad6">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Dra. Elena Morales Castro</rdfs:label>
+        <rdfs:comment>Martes 8:00-12:00, Jueves 14:00-18:00, Sábados 9:00-13:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad7">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Mg. Luis Herrera Paz</rdfs:label>
+        <rdfs:comment>Lunes 16:00-20:00, Miércoles 8:00-12:00, Viernes 16:00-20:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad8">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Dr. Miguel Ángel Ruiz</rdfs:label>
+        <rdfs:comment>Martes 10:00-14:00, Jueves 10:00-14:00, Sábados 16:00-20:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad9">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Dra. Patricia Navarro León</rdfs:label>
+        <rdfs:comment>Lunes 8:00-12:00, Miércoles 10:00-14:00, Viernes 8:00-12:00</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#disponibilidad10">
+        <rdf:type rdf:resource="#DisponibilidadHoraria"/>
+        <rdfs:label>Disponibilidad Mg. Fernando Campos Díaz</rdfs:label>
+        <rdfs:comment>Martes 14:00-18:00, Jueves 16:00-20:00, Sábados 8:00-12:00</rdfs:comment>
+    </rdf:Description>
+    
+    <!-- ====================== -->
+    <!-- ASIGNACIONES DOCENTES -->
+    <!-- ====================== -->
+
+    <rdf:Description rdf:about="#asignacion1">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dra. González - Fundamentos IA</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</horasAsignadas>
+        <asignadoA rdf:resource="#docente1"/>
+        <cursoDictadoEn rdf:resource="#curso1"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion2">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dra. González - Seminario IA</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</horasAsignadas>
+        <asignadoA rdf:resource="#docente1"/>
+        <cursoDictadoEn rdf:resource="#curso4"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion3">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Mg. Pérez - Herramientas Digitales</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</horasAsignadas>
+        <asignadoA rdf:resource="#docente2"/>
+        <cursoDictadoEn rdf:resource="#curso2"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion4">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Mg. Pérez - Metodologías de Investigación</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</horasAsignadas>
+        <asignadoA rdf:resource="#docente2"/>
+        <cursoDictadoEn rdf:resource="#curso9"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion5">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dr. Silva - Ciberseguridad</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</horasAsignadas>
+        <asignadoA rdf:resource="#docente5"/>
+        <cursoDictadoEn rdf:resource="#curso7"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion6">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dra. Morales - Estadística</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</horasAsignadas>
+        <asignadoA rdf:resource="#docente6"/>
+        <cursoDictadoEn rdf:resource="#curso8"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion7">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Mg. Herrera - Metodologías Investigación</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</horasAsignadas>
+        <asignadoA rdf:resource="#docente7"/>
+        <cursoDictadoEn rdf:resource="#curso9"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion8">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dra. Navarro - Realidad Virtual</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</horasAsignadas>
+        <asignadoA rdf:resource="#docente9"/>
+        <cursoDictadoEn rdf:resource="#curso14"/>
+        <asignadoEn rdf:resource="#periodo3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion9">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dr. Vega - Minería Datos</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</horasAsignadas>
+        <asignadoA rdf:resource="#docente3"/>
+        <cursoDictadoEn rdf:resource="#curso3"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion10">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dra. Torres - Desarrollo Ágil</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</horasAsignadas>
+        <asignadoA rdf:resource="#docente4"/>
+        <cursoDictadoEn rdf:resource="#curso5"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion11">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dra. Torres - Patrones Diseño</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</horasAsignadas>
+        <asignadoA rdf:resource="#docente4"/>
+        <cursoDictadoEn rdf:resource="#curso6"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion12">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dr. Ruiz - Sistemas Distribuidos</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</horasAsignadas>
+        <asignadoA rdf:resource="#docente8"/>
+        <cursoDictadoEn rdf:resource="#curso10"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion13">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dr. Ruiz - Arquitectura Microservicios</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</horasAsignadas>
+        <asignadoA rdf:resource="#docente8"/>
+        <cursoDictadoEn rdf:resource="#curso15"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion14">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dra. González - Machine Learning Avanzado</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</horasAsignadas>
+        <asignadoA rdf:resource="#docente1"/>
+        <cursoDictadoEn rdf:resource="#curso12"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion15">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Dr. Vega - Análisis Redes Sociales</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</horasAsignadas>
+        <asignadoA rdf:resource="#docente3"/>
+        <cursoDictadoEn rdf:resource="#curso13"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#asignacion16">
+        <rdf:type rdf:resource="#AsignacionDocente"/>
+        <rdfs:label>Asignación Mg. Campos - Gestión Proyectos</rdfs:label>
+        <horasAsignadas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</horasAsignadas>
+        <asignadoA rdf:resource="#docente10"/>
+        <cursoDictadoEn rdf:resource="#curso11"/>
+        <asignadoEn rdf:resource="#periodo4"/>
+    </rdf:Description>
+
+    <!-- ====================== -->
+    <!-- PRODUCCIONES ACADÉMICAS -->
+    <!-- ====================== -->
+
+    <rdf:Description rdf:about="#pub1">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Algoritmos de Aprendizaje Profundo para Procesamiento de Lenguaje Natural</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.1234/ai.2024.001</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-15</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Journal of Artificial Intelligence Research</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub2">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Educación crítica en entornos digitales: Un enfoque constructivista</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.5678/edtech.2025.002</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-10</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Educational Technology Research and Development</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2025</dcterms:date>
+        <dcterms:creator rdf:resource="#docente2"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub3">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patrones de diseño en sistemas distribuidos: Evaluación comparativa</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.2345/software.2024.003</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-22</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IEEE Transactions on Software Engineering</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub4">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Análisis predictivo en plataformas educativas MOOC</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.9012/analytics.2024.004</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-08</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Computers y Education</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub5">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metodologías ágiles en el desarrollo de aplicaciones móviles</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.7890/mobile.2024.005</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-18</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mobile Information Systems</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente4"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub6">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Técnicas avanzadas de detección de amenazas en aplicaciones web</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.3456/cybersec.2024.006</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-07-25</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Computers y Security</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente5"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub7">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Métodos estadísticos para análisis de big data en tiempo real</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.4567/stats.2024.007</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-08-12</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Journal of Statistical Computing</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente6"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub8">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Investigación acción participativa en entornos educativos digitales</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.5678/eduresearch.2024.008</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-05</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Educational Research Quarterly</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente2"/>
+        <dcterms:creator rdf:resource="#docente7"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub9">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arquitectura de microservicios para sistemas de alta disponibilidad</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.6789/distributed.2024.009</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-01</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Distributed Systems Review</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente8"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub10">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Realidad virtual inmersiva en procesos de enseñanza-aprendizaje</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.7890/vr.2024.010</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-20</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtual Reality in Education</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente9"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub11">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gestión ágil de proyectos en equipos distribuidos</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.8901/projmgmt.2024.011</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-04-30</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Project Management Journal</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente10"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub12">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Redes neuronales convolucionales para análisis de imágenes médicas</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.9012/neural.2024.012</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-15</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Neural Computing and Applications</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente1"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub13">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Análisis de sentimientos en redes sociales usando procesamiento de lenguaje natural</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.1023/sentiment.2024.013</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-10</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Social Network Analysis and Mining</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente3"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub14">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aplicaciones de realidad aumentada en educación STEM</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.1134/ar.2024.014</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-05</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AR/VR in Education</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente9"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#pub15">
+        <rdf:type rdf:resource="#ProduccionAcademica"/>
+        <titulo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patrones de arquitectura para sistemas de streaming de datos</titulo>
+        <doi rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10.1245/streaming.2024.015</doi>
+        <fechaPublicacion rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-08-28</fechaPublicacion>
+        <revista rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Big Data Research</revista>
+        <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</dcterms:date>
+        <dcterms:creator rdf:resource="#docente4"/>
+    </rdf:Description>
+
+</rdf:RDF>

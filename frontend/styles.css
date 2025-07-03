@@ -1,0 +1,83 @@
+/* Estilos personalizados */
+.section {
+    padding: 20px 0;
+}
+
+.search-box {
+    width: 300px;
+}
+
+/* Estilos para el contenedor del grafo */
+#graph-container {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: white;
+    position: relative;
+}
+
+/* Estilos para los tooltips */
+.vis-tooltip {
+    position: absolute;
+    padding: 10px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-width: 300px;
+    font-size: 0.9em;
+}
+
+.docente-info {
+    padding: 8px;
+}
+
+.docente-info h6 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.docente-info p {
+    margin: 4px 0;
+    color: #666;
+}
+
+/* Estilos para la página de consultas SPARQL */
+#sparql-container {
+    margin-top: 20px;
+}
+
+.sparql-query-box {
+    margin-bottom: 20px;
+}
+
+.sparql-results {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Estilos para la página de exportación */
+.export-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.export-button {
+    flex: 1;
+}
+
+/* Animaciones */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://cramsoft.org/academico#"
+     xml:base="http://cramsoft.org/academico"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:bibo="http://purl.org/ontology/bibo/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<!-- Definición de la Ontología -->
+<owl:Ontology rdf:about="http://cramsoft.org/academico">
+    <rdfs:label>Ontología Académica Universitaria</rdfs:label>
+    <rdfs:comment>Ontología para gestión académica universitaria - incluye docentes, cursos, asignaciones y producción académica</rdfs:comment>
+    <dcterms:creator>Sistema Académico CRAMSOFT</dcterms:creator>
+    <dcterms:created rdf:datatype="xsd:date">2025-01-01</dcterms:created>
+    <owl:versionInfo>1.0</owl:versionInfo>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://purl.org/ontology/bibo/"/>
+</owl:Ontology>
+
+<!-- ######################### -->
+<!-- ####### CLASES ######### -->
+<!-- ######################### -->
+
+<owl:Class rdf:about="#Docente">
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:label>Docente</rdfs:label>
+    <rdfs:comment>Persona que imparte cursos en la universidad y realiza actividades académicas</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Curso">
+    <rdfs:label>Curso</rdfs:label>
+    <rdfs:comment>Unidad académica que se imparte en un periodo determinado</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#LineaInvestigacion">
+    <rdfs:label>Línea de Investigación</rdfs:label>
+    <rdfs:comment>Línea de investigación especializada dentro de un área académica</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Area">
+    <rdfs:label>Área Académica</rdfs:label>
+    <rdfs:comment>Área temática general (ej: Ciencias de la Computación, Matemáticas)</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PeriodoAcademico">
+    <rdfs:label>Período Académico</rdfs:label>
+    <rdfs:comment>Ciclo lectivo o semestre académico (ej: 2025-I, 2025-II)</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AsignacionDocente">
+    <rdfs:label>Asignación Docente</rdfs:label>
+    <rdfs:comment>Asignación específica de horas docentes a un curso en un periodo determinado</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ProduccionAcademica">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/bibo/Document"/>
+    <rdfs:label>Producción Académica</rdfs:label>
+    <rdfs:comment>Publicaciones, artículos, libros o trabajos académicos producidos por docentes</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DisponibilidadHoraria">
+    <rdfs:label>Disponibilidad Horaria</rdfs:label>
+    <rdfs:comment>Horarios disponibles de un docente para asignaciones académicas</rdfs:comment>
+</owl:Class>
+
+<!-- ######################### -->
+<!-- #### PROPIEDADES DE OBJETO -->
+<!-- ######################### -->
+
+<owl:ObjectProperty rdf:about="#dicta">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="#Curso"/>
+    <rdfs:label>dicta</rdfs:label>
+    <rdfs:comment>Relaciona un docente con los cursos que imparte</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneAsignacion">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="#AsignacionDocente"/>
+    <owl:inverseOf rdf:resource="#asignadoA"/>
+    <rdfs:label>tiene asignación</rdfs:label>
+    <rdfs:comment>Conecta docentes con sus asignaciones de horas</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#asignadoA">
+    <rdfs:domain rdf:resource="#AsignacionDocente"/>
+    <rdfs:range rdf:resource="#Docente"/>
+    <owl:inverseOf rdf:resource="#tieneAsignacion"/>
+    <rdfs:label>asignado a</rdfs:label>
+    <rdfs:comment>Indica a qué docente pertenece una asignación</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#perteneceLinea">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="#LineaInvestigacion"/>
+    <rdfs:label>pertenece a línea</rdfs:label>
+    <rdfs:comment>Relaciona un docente con sus líneas de investigación</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#relacionadoConLinea">
+    <rdfs:domain rdf:resource="#Curso"/>
+    <rdfs:range rdf:resource="#LineaInvestigacion"/>
+    <rdfs:label>relacionado con línea</rdfs:label>
+    <rdfs:comment>Indica qué líneas de investigación están relacionadas con un curso</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#perteneceAArea">
+    <rdfs:domain rdf:resource="#Curso"/>
+    <rdfs:range rdf:resource="#Area"/>
+    <rdfs:label>pertenece a área</rdfs:label>
+    <rdfs:comment>Clasifica un curso dentro de un área académica</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#subAreaDe">
+    <rdfs:domain rdf:resource="#LineaInvestigacion"/>
+    <rdfs:range rdf:resource="#Area"/>
+    <rdfs:label>sub-área de</rdfs:label>
+    <rdfs:comment>Establece jerarquía entre líneas de investigación y áreas</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#asignadoEn">
+    <rdfs:domain rdf:resource="#AsignacionDocente"/>
+    <rdfs:range rdf:resource="#PeriodoAcademico"/>
+    <rdfs:label>asignado en</rdfs:label>
+    <rdfs:comment>Indica en qué período académico se realiza la asignación</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneProduccion">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="#ProduccionAcademica"/>
+    <rdfs:label>tiene producción</rdfs:label>
+    <rdfs:comment>Relaciona un docente con su producción académica</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#cursoDictadoEn">
+    <rdfs:domain rdf:resource="#AsignacionDocente"/>
+    <rdfs:range rdf:resource="#Curso"/>
+    <rdfs:label>curso dictado en</rdfs:label>
+    <rdfs:comment>Especifica qué curso se dicta en una asignación</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneDisponibilidad">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="#DisponibilidadHoraria"/>
+    <rdfs:label>tiene disponibilidad</rdfs:label>
+    <rdfs:comment>Relaciona un docente con su disponibilidad horaria</rdfs:comment>
+</owl:ObjectProperty>
+
+<!-- ######################### -->
+<!-- #### PROPIEDADES DE DATOS -->
+<!-- ######################### -->
+
+<owl:DatatypeProperty rdf:about="#gradoAcademico">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>grado académico</rdfs:label>
+    <rdfs:comment>Máximo grado académico alcanzado por el docente</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#orcid">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>ORCID</rdfs:label>
+    <rdfs:comment>Identificador único de investigador ORCID</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#horasAsignadas">
+    <rdfs:domain rdf:resource="#AsignacionDocente"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>horas asignadas</rdfs:label>
+    <rdfs:comment>Número de horas académicas asignadas</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#titulo">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/title"/>
+    <rdfs:domain rdf:resource="#ProduccionAcademica"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>título</rdfs:label>
+    <rdfs:comment>Título de la producción académica</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#doi">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/bibo/doi"/>
+    <rdfs:domain rdf:resource="#ProduccionAcademica"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>DOI</rdfs:label>
+    <rdfs:comment>Digital Object Identifier de la publicación</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#creditos">
+    <rdfs:domain rdf:resource="#Curso"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>créditos</rdfs:label>
+    <rdfs:comment>Número de créditos académicos del curso</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#codigo">
+    <rdfs:domain rdf:resource="#Curso"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>código</rdfs:label>
+    <rdfs:comment>Código único identificador del curso</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#anio">
+    <rdfs:domain rdf:resource="#PeriodoAcademico"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>año</rdfs:label>
+    <rdfs:comment>Año del período académico</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#semestre">
+    <rdfs:domain rdf:resource="#PeriodoAcademico"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>semestre</rdfs:label>
+    <rdfs:comment>Semestre del período académico (1 o 2)</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#especialidad">
+    <rdfs:domain rdf:resource="#Docente"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>especialidad</rdfs:label>
+    <rdfs:comment>Área de especialización del docente</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#fechaPublicacion">
+    <rdfs:domain rdf:resource="#ProduccionAcademica"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:label>fecha de publicación</rdfs:label>
+    <rdfs:comment>Fecha de publicación de la producción académica</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#revista">
+    <rdfs:domain rdf:resource="#ProduccionAcademica"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>revista</rdfs:label>
+    <rdfs:comment>Revista o editorial donde se publicó</rdfs:comment>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
