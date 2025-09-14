@@ -1,2 +1,2 @@
-hello.gpg
+hello.gpg real
 hello DCO
